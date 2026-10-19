@@ -4,12 +4,12 @@
       "text": "Population",
       "anchor": "start",
       "subtitle": "Population | FRED through ECO API",
-      "fontSize": "14",
-      "subtitleFontSize": "12",
+      "fontSize": 14,
+      "subtitleFontSize": 12,
       "color": "#000000",
       "subtitleColor": "#000000"
     },
-    "height": "250",
+    "height": 250,
     "width": "container",
     "autosize": {
       "type": "fit",
@@ -29,7 +29,7 @@
     "mark": {
       "type": "line",
       "color": "#65b464",
-      "strokeWidth": "2"
+      "strokeWidth": 2
     },
     "encoding": {
       "x": {
