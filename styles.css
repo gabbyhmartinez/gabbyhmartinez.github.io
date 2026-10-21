@@ -206,6 +206,14 @@
     color: var(--espresso-soft);
     font-size: 0.95rem;
   }
+  img.thumb {
+    object-fit: cover;
+    filter: sepia(0.25) saturate(0.9);
+    transition: filter 0.2s ease;
+  }
+  .project:hover img.thumb {
+    filter: none;
+  }
   .project-body { padding-top: 0.9rem; }
   .project-title { font-family: var(--serif); font-weight: 600; font-size: 1.3rem; line-height: 1.25; margin: 0; }
   .project:hover .project-title { color: var(--strawberry); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
