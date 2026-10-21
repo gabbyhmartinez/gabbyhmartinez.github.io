@@ -1,46 +1,79 @@
 <!DOCTYPE html>
-<html>
-
-<!-- Richard Davies, Data Science -->
-
-<!-- Commenting you code is vital, vital, vital -->
-<!-- This is how you add comments to HTML -->
-
-<!-- You can also include
-multi - line comments
-if you find that useful -->
-
-<!-- To comment something out, use the short-cut CTRL & the "/" key (command + "/" on Mac)-->
-
-<!-- HTML files have two fundamental parts. (1) The head, (2) The body -->
-
-<!-- The head contains things that you do not see on the page -->
-
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Gabby Martinez</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gabriella Martinez | Data Science for Public Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
-<!-- The body contains thigs you see -->
-<!-- Most elements both open and close, with the content in the middle -->
-<!-- Indenting is optional, but helps with readability -->
 <body>
-    <h1 class="big" style="margin-bottom: 0px;"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
-        <!-- This is a header, it is the largest text on the page -->
-        Gabriella Martinez
-    </h1>
-    <p style="margin-top: 0px; color: darkblue">
-        <!-- we're setting the margin to 0px so the header and authour name are close together -->
-        Gabriella Martinez | <a href="https://www.linkedin.com/in/gabriellahmartinez/">LinkedIn</a> | <a
-            href="https://www.github.com/gabbyhmartinez">GitHub</a>
-    </p>
-    <h3 class="small"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
-        This is going to be my homepage.
-    </h3>
-    
-    <a href="portfolio.html">PP434 Portfolio tasks</a><br>
-    <a href="https://gabbyhmartinez.github.io/nyc-livability/">
-        NYC Everyday Access Project
-      </a>
+
+  <!-- Navigation: copy this exact block onto every page, and move aria-current="page" to the active link -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="nav-name" href="index.html">Gabriella Martinez</a>
+      <ul class="nav-links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">PP434 Weekly Tasks</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+      <h1>Gabriella Martinez</h1>
+      <p class="lead">I use data science to study how cities and public policy treat people differently, and how to make that fairer.</p>
+      <p class="sub">Postgraduate student at the London School of Economics (MPA in Data Science for Public Policy), previously in consumer protection at the Massachusetts Attorney General's Office.</p>
+      <ul class="contact-row">
+        <li><a href="https://www.linkedin.com/in/gabriellahmartinez/">LinkedIn</a></li>
+        <li><a href="https://www.github.com/gabbyhmartinez">GitHub</a></li>
+        <li><a href="about.html">CV and experience</a></li>
+      </ul>
+      </div>
+
+      <!-- Portrait: save your photo as images/gabriella.jpg (square crop works best),
+           then replace the <div class="portrait">...</div> below with:
+           <img class="portrait" src="images/gabriella.jpg" alt="Gabriella Martinez"> -->
+      <div class="portrait" role="img" aria-label="Photo of Gabriella Martinez (placeholder)">GM</div>
+    </section>
+
+    <section class="menu-section">
+      <h2>Selected projects</h2>
+      <p class="intro">A few things I've built. Each one opens as its own page.</p>
+
+      <ul class="menu">
+        <li>
+          <a href="https://gabbyhmartinez.github.io/nyc-livability/">
+            <div class="menu-line"><span class="dish">NYC Everyday Access</span><span class="leader" aria-hidden="true"></span><span class="tag">Urban equity</span></div>
+            <p class="note">Short description: what question it asks, what data it uses, what you found. (Also my PP434 course project.)</p>
+          </a>
+        </li>
+        <li>
+          <a href="projects.html">
+            <div class="menu-line"><span class="dish">Frontier industries in Glasgow City Region</span><span class="leader" aria-hidden="true"></span><span class="tag">Local economy</span></div>
+            <p class="note">Short description: UK local authority data, with a focus on Glasgow.</p>
+          </a>
+        </li>
+              <li>
+          <a href="projects.html">
+            <div class="menu-line"><span class="dish">Your third project title</span><span class="leader" aria-hidden="true"></span><span class="tag">Topic or method</span></div>
+            <p class="note">Placeholder: swap in another project, such as a Python or GeoPandas analysis, an algorithmic fairness piece, or a policy brief.</p>
+          </a>
+        </li>
+      </ul>
+      <p class="menu-more"><a class="button" href="projects.html">See all projects</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Gabriella Martinez, London. Built with HTML, CSS and Vega-Lite.</p>
+  </footer>
+
 </body>
 </html>

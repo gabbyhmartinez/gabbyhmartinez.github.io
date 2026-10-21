@@ -1,67 +1,234 @@
-/* This is an example CSS file. If you include it in your portfolio, it'll provide some clean and basic styling */
-/* for your page. Feel free to experiment with the values, or copy them into a new file and use that instead. */
+/* Portfolio theme: coffee shop palette.
+   All colours live in the :root block, so you can retune the whole site from one place. */
 
-/* These are comments in CSS. Comments don't do anything except explain your working to make code easier to understand. */
+:root {
+  --cream: #F4EBDD;        /* page background: latte foam */
+  --cream-deep: #EADCC6;   /* subtle panels, hover fills */
+  --espresso: #3A2A20;     /* text */
+  --espresso-soft: #6B5648;/* secondary text */
+  --strawberry: #B8283F;   /* accent 1: links, hover, highlights */
+  --emerald: #1F6B4F;      /* accent 2: tags, active states */
+  --line: #CDB99C;         /* hairlines and dotted leaders */
 
-
-body { /* We can style any HTML element by using its name - here we're styling the body */
-  /* We want text that uses a clean sans-serif font, is usually 16px big and close to black */
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  color: #333;
-  line-height: 1.6;
-  /* we want a white page, that's centered and not too wide */
-  background-color: #fff;
-  margin:0 auto;
-  max-width: 800px;
-  padding-top: 60px;
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans: 'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+*, *::before, *::after { box-sizing: border-box; }
 
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  color: #333;
-  margin-top: 24px;
-  margin-bottom: 16px;
+html { scroll-padding-top: 5rem; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--espresso);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a { color: var(--strawberry); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--espresso); }
+a:focus-visible, .nav-links a:focus-visible {
+  outline: 2px solid var(--emerald);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Top navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+}
+.nav-name {
+  font-family: var(--serif);
   font-weight: 600;
-}
-
-/* We want the headings to be a little bigger than the paragraph text */
-.big { /* This is the class we created in the HTML file, you can use it to style any element */
-  font-size: 2.5em;
-}
-
-h2 {
-  font-size: 1.75em;
-}
-
-.small {
-  font-size: 1.25em;
-}
-
-/* Paragraph */
-p {
-  margin-bottom: 1em;
-  font-weight: 300;
-}
-
-section {
-  margin-bottom: 2.5em;  /* We want a little more space between sections */
-}
-
-/* Links */
-/* We want the links to be a little more visible  and a different color */
-a {
-  color: #065f46;
+  font-size: 1.2rem;
+  color: var(--espresso);
   text-decoration: none;
 }
-
-a:hover {
-  text-decoration: underline;
+.nav-links { display: flex; flex-wrap: wrap; gap: 0.25rem 1.75rem; list-style: none; margin: 0; padding: 0; }
+.nav-links a {
+  color: var(--espresso-soft);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
 }
-  
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
+.nav-links a:hover { color: var(--espresso); border-bottom-color: var(--strawberry); }
+.nav-links a[aria-current="page"] { color: var(--emerald); border-bottom-color: var(--emerald); font-weight: 700; }
+
+/* ---------- Layout ---------- */
+main { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem 5rem; }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 5rem 0 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.hero-text { max-width: 40rem; }
+
+/* Circular portrait (works on a div placeholder or an <img>) */
+.portrait {
+  flex: 0 0 auto;
+  width: clamp(11rem, 24vw, 16rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--cream-deep);
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--strawberry);
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 3rem;
+  color: var(--espresso-soft);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+}
+.hero .lead {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.6vw, 1.55rem);
+  line-height: 1.45;
+  color: var(--espresso);
+  margin: 0 0 1.25rem;
+  max-width: 38rem;
+}
+.hero .sub { color: var(--espresso-soft); max-width: 36rem; margin: 0 0 1.75rem; }
+
+.contact-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 0; list-style: none; }
+
+/* ---------- The menu (project list) ---------- */
+.menu-section h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.9rem;
+  margin: 0 0 0.25rem;
+}
+.menu-section .intro { color: var(--espresso-soft); margin: 0 0 1.75rem; }
+
+.menu { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.menu li { border-bottom: 1px solid var(--line); }
+.menu a {
+  display: block;
+  padding: 1.25rem 0.5rem;
+  color: var(--espresso);
+  text-decoration: none;
+}
+.menu a:hover { background: var(--cream-deep); }
+.menu a:hover .dish { color: var(--strawberry); }
+
+.menu-line { display: flex; align-items: baseline; gap: 0.75rem; }
+.dish { font-family: var(--serif); font-weight: 600; font-size: 1.3rem; }
+.leader { flex: 1; border-bottom: 2px dotted var(--line); transform: translateY(-0.3rem); min-width: 1rem; }
+.tag { font-weight: 700; font-size: 0.9rem; color: var(--emerald); white-space: nowrap; }
+.note { margin: 0.35rem 0 0; color: var(--espresso-soft); max-width: 40rem; font-size: 1rem; }
+
+/* ---------- Inner pages (Projects, Weekly Tasks) ---------- */
+.page-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 3.5rem 0 0.5rem;
+}
+.byline { color: var(--espresso-soft); margin: 0 0 2rem; max-width: 40rem; }
+.section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.9rem;
+  margin: 3.5rem 0 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+main h3 { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; margin: 0 0 0.5rem; }
+main section { margin: 2rem 0; }
+main p { max-width: 44rem; }
+main img { max-width: 100%; height: auto; }
+figure { margin: 1rem 0; overflow-x: auto; }
+
+/* ---------- Project grid ---------- */
+.project-grid {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 2.5rem 2rem;
+}
+.project { display: block; color: var(--espresso); text-decoration: none; }
+.thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
+  background: var(--cream-deep);
+  border: 1px solid var(--line);
+  color: var(--espresso-soft);
+  font-size: 0.95rem;
+}
+.project-body { padding-top: 0.9rem; }
+.project-title { font-family: var(--serif); font-weight: 600; font-size: 1.3rem; line-height: 1.25; margin: 0; }
+.project:hover .project-title { color: var(--strawberry); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.project:focus-visible { outline: 2px solid var(--emerald); outline-offset: 4px; }
+.project-tag { margin: 0.25rem 0 0.5rem; color: var(--emerald); font-weight: 700; font-size: 0.9rem; }
+.project-desc { margin: 0; color: var(--espresso-soft); font-size: 1rem; }
+
+/* ---------- Button ---------- */
+.menu-more { margin: 2rem 0 0; }
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  background: var(--espresso);
+  color: var(--cream);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+.button:hover { background: var(--strawberry); color: var(--cream); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--espresso-soft);
+  font-size: 0.95rem;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  .hero { flex-direction: column-reverse; align-items: flex-start; gap: 2rem; }
+  .portrait { width: 10rem; }
+}
+@media (max-width: 560px) {
+  .hero { padding-top: 3rem; }
+  .menu-line { flex-wrap: wrap; }
+  .leader { display: none; }
+  .tag { width: 100%; }
 }

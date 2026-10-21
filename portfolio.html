@@ -40,18 +40,32 @@
     </style>
 </head>
 
-<body> 
+<body>
+  <!-- Navigation: same block on every page; aria-current="page" marks the active tab -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="nav-name" href="index.html">Gabriella Martinez</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html" aria-current="page">PP434 Weekly Tasks</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
 <!-- The body tag contains the elements that visitors to our page will see. -->
-    <h1 class="big" style="margin-bottom: 0px;"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
+    <h1 class="page-title"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
         <!-- This is a header, it is the largest text on the page -->
         PP434 Portfolio Tasks
     </h1>
-    <p style="margin-top: 0px; color: darkblue">
+    <p class="byline">
         <!-- we're setting the margin to 0px so the header and authour name are close together -->
         Gabriella Martinez | <a href="https://www.linkedin.com/in/gabriellahmartinez/">LinkedIn</a> | <a
             href="https://www.github.com/gabbyhmartinez">GitHub</a>
     </p>
-    <h2 class="small", style="color:indianred"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
+    <h2 class="section-title"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
         CC1: Hosting and Displaying Charts  
     </h2>
     <p>
@@ -86,7 +100,7 @@
             <figure id="Location2"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
         </section>
 
-        <h2 class="small", style="color:indianred"> 
+        <h2 class="section-title"> 
             CC2: Building Charts  
         </h2>
         <p>
@@ -115,7 +129,7 @@
             <figure id="Location4"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
         </section>
 
-        <h2 class="small", style="color:indianred"> 
+        <h2 class="section-title"> 
             CC3: Policy Debate  
         </h2>
         <p>
@@ -145,7 +159,7 @@
             </p>
         </section>
     
-        <h2 class="small", style="color:indianred"> 
+        <h2 class="section-title"> 
             CC4: Replication
         </h2>
         <p>
@@ -182,6 +196,8 @@
             </div>
             <figure id="Location8"></figure> 
         </section>
+
+  </main>
 
     <script>
         // This is a comment in JavaScript - it's a different language to HTML and CSS
