@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Number of people living in the world's largest cities, 2020",
+    "subtitle": [
+      "Estimated number of people living in cities ranked among the top 100 most populous in 2020.",
+      "Data source: European Commission, Joint Research Centre (JRC) (2025)"
+    ],
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5b5b5b",
+    "offset": 20,
+    "subtitlePadding": 6
+  },
+  "data": {
+    "url": "https://ourworldindata.org/grapher/population-of-the-worlds-largest-cities.csv?v=1&csvType=filtered&useColumnShortNames=true&tab=discrete-bar&time=2020&country=Dhaka~Jakarta~Karachi~Cairo~New+Delhi~Lahore~Shanghai~Tokyo~New+York+City~London",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "calculate": "datum.urban_pop_top_100_estimates / 1000000",
+      "as": "pop_millions"
+    }
+  ],
+  "padding": {"left": 130, "right": 20, "top": 10, "bottom": 10},
+  "width": 500,
+  "height": {"step": 48},
+  "encoding": {
+    "y": {
+      "field": "entity",
+      "type": "nominal",
+      "sort": {"field": "pop_millions", "order": "descending"},
+      "axis": null,
+      "scale": {"paddingInner": 0.25}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "color": "#6d87b1"},
+      "encoding": {
+        "x": {
+          "field": "pop_millions",
+          "type": "quantitative",
+          "scale": {"domain": [0, 40]},
+          "axis": {
+            "title": "Population (millions)",
+            "values": [0, 5, 10, 15, 20, 25, 30, 35, 40],
+            "format": "d",
+            "grid": true,
+            "gridColor": "#dddddd",
+            "domain": false,
+            "ticks": false,
+            "labelFontSize": 12,
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titleColor": "#5b5b5b"
+          }
+        },
+        "tooltip": [
+          {"field": "entity", "title": "City"},
+          {
+            "field": "urban_pop_top_100_estimates__annotations",
+            "title": "Country"
+          },
+          {
+            "field": "urban_pop_top_100_estimates",
+            "type": "quantitative",
+            "title": "Population",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": -8,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#444444"
+      },
+      "encoding": {"x": {"datum": 0}, "text": {"field": "entity"}}
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": 8,
+        "fontSize": 12,
+        "color": "#444444"
+      },
+      "encoding": {
+        "x": {"datum": 0},
+        "text": {"field": "urban_pop_top_100_estimates__annotations"}
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Death Rate from Mental Health and Substance Use Disorders",
+    "subtitle": "Deaths per 100,000 people, 2021 | Source: WHO via Our World in Data"
+  },
+  "data": {
+    "url": "https://ourworldindata.org/grapher/death-rate-from-mental-health-and-substance-use-disorders-who.csv?v=1&csvType=filtered&useColumnShortNames=true&tab=discrete-bar&time=latest&country=OWID_NAM~OWID_EUR~OWID_OCE~OWID_SAM~OWID_ASI~OWID_AFR",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "calculate": "datum['death_rate100k__age_group_allages__sex_both_sexes__cause_mental_and_substance_use_disorders']",
+      "as": "rate"
+    }
+  ],
+  "width": 500,
+  "height": 300,
+  "mark": {"type": "bar", "color": "#b46480"},
+  "encoding": {
+    "y": {
+      "field": "entity",
+      "type": "nominal",
+      "sort": "-x",
+      "axis": {"title": ""}
+    },
+    "x": {
+      "field": "rate",
+      "type": "quantitative",
+      "axis": {"title": "Deaths per 100,000"}
+    }
+  },
+  "config": {}
+}

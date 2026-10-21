@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Mental Health Conditions as a Risk Factor for Drug Dependency",
+    "subtitle": "Increased risk of illicit drug dependency, relative to people without the condition (2010) | Source: Our World in Data"
+  },
+  "data": {
+    "url": "https://ourworldindata.org/grapher/mental-health-as-risk-for-drug-dependency.csv?v=1&csvType=filtered&useColumnShortNames=true",
+    "format": {"type": "csv"}
+  },
+  "width": 500,
+  "height": 450,
+  "mark": {"type": "bar", "color": "#5c70a6", "size": 10},
+  "encoding": {
+    "y": {
+      "field": "entity",
+      "type": "nominal",
+      "sort": "-x",
+      "axis": {"title": "", "labelLimit": 300}
+    },
+    "x": {
+      "field": "increased_risk_of_illicit_drug_dependency",
+      "type": "quantitative",
+      "axis": {"title": "Increased risk (times higher)"}
+    }
+  },
+  "config": {}
+}

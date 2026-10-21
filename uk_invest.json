@@ -4,13 +4,13 @@
       "text": "Government Investment",
       "anchor": "start",
       "subtitle": "Central Gov GFCF, % of GDP | Source: ONS through ECO API",
-      "fontSize": "14",
-      "subtitleFontSize": "12",
+      "fontSize": 14,
+      "subtitleFontSize": 12,
       "color": "#000000",
       "subtitleColor": "#000000"
     },
-    "height": "250",
-    "width": "container",
+    "height": 250,
+    "width": 500,
     "autosize": {
       "type": "fit",
       "contains": "padding"
@@ -28,8 +28,8 @@
     },
     "mark": {
       "type": "line",
-      "color": "#65b464",
-      "strokeWidth": "2"
+      "color": "#295391",
+      "strokeWidth": 2
     },
     "encoding": {
       "x": {
