@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project | Gabriella Martinez</title> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+  <!-- Navigation: same as every page, but with ../../ in front of each link -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="nav-name" href="../../index.html">Gabriella Martinez</a>
+      <ul class="nav-links">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../projects.html" aria-current="page">Projects</a></li>
+        <li><a href="../../about.html">About Me</a></li>
+        <li><a href="../../portfolio.html">PP434 Weekly Tasks</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="case-study">
+    <h1 class="page-title">A Hidden Threat?: Investigating the Effects of Radiation on Life Expectancy in Japan</h1>
+    <p class="byline">Public Health · Northeastern University · July 2024 · Python</p> 
+
+    <!-- Optional cover image: reuse the photo from your project card, or delete this line -->
+    <img class="case-cover" src="../../images/hiroshima.jpg" alt="Hiroshima Peace Memorial"> 
+
+    <section>
+      <h2 class="section-title">Abstract</h2>
+      <p>
+        The effects of radiation on the health of a population have been studied meticulously since the emergence 
+        of nuclear technology in the past century and caused public concern. This study aims to analyze whether 
+        nuclear radiation has a strong effect on life expectancy in order to understand the long-lasting implications 
+        of radiation exposure. To do so, radiation levels and life expectancy statistics from 2010-2020 from varying
+         prefectures in Japan will be dissected. I use data from national records and environmental databases to run 
+         a regression analysis on correlation of the variables and uncover their relationship. My findings showed that
+          radiation did not have a significant effect on life expectancy, so I turn to exploring why that might have 
+          been the case, specifically in Fukushima prefecture, as it experienced the nuclear meltdown at Fukushima 
+          Dai-ichi nuclear power plant in 2011. Certain factors, such as evacuation, medical care, and community ties 
+          have been found to be important in the case of keeping residents in Fukushima safe. Overall, the study helps 
+          to gain perspective on the lasting effects of radiation and what actions may be able to curb its harmfulness.
+        </p> 
+    </section>
+
+    <section>
+      <h2 class="section-title">Materials</h2>
+      <p class="link-row">
+        <!-- Keep only the links that exist for this project -->
+        <a class="button" href="paper.pdf">Full paper (PDF)</a>
+        <a class="button button-outline" href="https://github.com/gabbyhmartinez/REPO-NAME">Code</a>
+        <a class="button button-outline" href="poster.pdf">Poster</a>
+        <a class="button button-outline" href="slides.pdf">Slides</a>
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Key findings</h2>
+      <ul class="findings">
+        <li>First finding or conclusion.</li> <!-- EDIT -->
+        <li>Second finding or conclusion.</li>
+        <li>Third finding or conclusion.</li>
+      </ul>
+    </section>
+
+    <!-- Optional: delete this whole block if you don't want an embedded paper -->
+    <section>
+      <details class="paper-embed">
+        <summary>Read the paper on this page</summary>
+        <iframe src="paper.pdf" title="Full paper"></iframe>
+      </details>
+    </section>
+
+    <p class="back-link"><a href="../../projects.html">← Back to all projects</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>Gabriella Martinez, London. Built with HTML, CSS and Vega-Lite.</p>
+  </footer>
+
+</body>
+</html>
