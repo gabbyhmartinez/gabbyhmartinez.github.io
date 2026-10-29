@@ -309,3 +309,114 @@
   font-weight: 700;
   font-size: 0.9rem;
 }
+
+/* ---------- About Me Photo Carousel (About page) ---------- */
+.carousel {
+  --visible: 4;
+  --gap: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.carousel-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;            /* hide scrollbar: Firefox */
+}
+.carousel-viewport::-webkit-scrollbar { display: none; }  /* Chrome, Safari */
+.carousel-viewport:focus-visible { outline: 2px solid var(--emerald); outline-offset: 4px; }
+
+.carousel-track {
+  display: flex;
+  gap: var(--gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.carousel-track li {
+  flex: 0 0 calc((100% - (var(--visible) - 1) * var(--gap)) / var(--visible));
+  scroll-snap-align: start;
+}
+
+/* Every photo is the same square, however it was shot */
+.carousel-item {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--cream-deep);
+}
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hover/focus: darken and reveal the caption */
+.carousel-item figcaption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--cream);
+  background: rgba(58, 42, 32, 0.68);   /* espresso at 68% */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.carousel-item:hover figcaption,
+.carousel-item:focus-visible figcaption,
+.carousel-item:focus-within figcaption { opacity: 1; }
+.carousel-item:focus-visible { outline: 2px solid var(--emerald); outline-offset: 2px; }
+
+/* Triangle arrows */
+.carousel-arrow {
+  width: 2rem;
+  height: 3rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--espresso-soft);
+}
+.carousel-arrow::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);   /* points left */
+}
+.carousel-arrow-next::before { clip-path: polygon(0 0, 100% 50%, 0 100%); }  /* points right */
+.carousel-arrow:hover:not(:disabled) { color: var(--strawberry); }
+.carousel-arrow:focus-visible { outline: 2px solid var(--emerald); outline-offset: 2px; }
+.carousel-arrow:disabled { opacity: 0.25; cursor: default; }
+
+/* Fewer photos at once on phones */
+@media (max-width: 700px) {
+  .carousel { --visible: 2; --gap: 0.75rem; }
+  .carousel-arrow { width: 1.4rem; height: 2.2rem; }
+}
+
+/* Touch screens can't hover, so keep captions visible along the bottom */
+@media (hover: none) {
+  .carousel-item figcaption {
+    inset: auto 0 0 0;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 1.5rem 0.75rem 0.6rem;
+    font-size: 0.95rem;
+    background: linear-gradient(to top, rgba(58, 42, 32, 0.85), transparent);
+    opacity: 1;
+  }
+}

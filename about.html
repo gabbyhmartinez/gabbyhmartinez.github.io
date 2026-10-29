@@ -85,7 +85,78 @@
 
     <!-- Optional: an "Outside of work" section adds personality. Delete if you prefer. -->
     <h2 class="section-title">Outside of work</h2>
-    <p>Interests go here</p>
+<p class="byline">A few things I love doing. Hover over a photo for the story.</p>
+
+<div class="carousel" aria-label="Photos from outside of work">
+  <button class="carousel-arrow carousel-arrow-prev" type="button" aria-label="Previous photos"></button>
+
+  <div class="carousel-viewport" tabindex="0">
+    <ul class="carousel-track">
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/camel_ride.jpg" alt="Line of camels in the desert" loading="lazy">
+          <figcaption>Exploring the Sahara Desert on camelback</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/london_street.jpg" alt="London Street" loading="lazy">
+          <figcaption>I love walking around city streets and parks</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/coffee.jpg" alt="Coffee shop" loading="lazy">
+          <figcaption>I enjoy grabbing a coffee and pastry with friends</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/art.jpg" alt="The Swing in the Wallace Collection London" loading="lazy">
+          <figcaption>Art musuems see me frequently</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/train.jpg" alt="NYC Subway Train" loading="lazy">
+          <figcaption>Big fan of public transportation</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/italy_water.jpg" alt="Positano, Italy" loading="lazy">
+          <figcaption>I love photography, espeically when traveling</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/boone.jpg" alt="Dog in front of Christmas tree" loading="lazy">
+          <figcaption>My dog Boone!</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/dancing.jpg" alt="Two people dancing in Colombia" loading="lazy">
+          <figcaption>I love to dance!</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/dominic_fike.jpg" alt="Orange Warsaw Festival, Poland" loading="lazy">
+          <figcaption>My first solo trip in 2026 for a music festival in Warsaw, Poland</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="carousel-item" tabindex="0">
+          <img src="images/glacier.jpg" alt="Glacier Perito Moreno" loading="lazy">
+          <figcaption>I trekked glacier Perito Moreno in Patagonia, Argentina</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+
+  <button class="carousel-arrow carousel-arrow-next" type="button" aria-label="Next photos"></button>
+</div>
 
     <h2 class="section-title">Get in touch!</h2>
     <ul class="contact-row">
@@ -98,6 +169,42 @@
   <footer class="site-footer">
     <p>Gabriella Martinez, London. Built with HTML, CSS and Vega-Lite.</p>
   </footer>
+
+  <script>
+    (function () {
+      const carousel = document.querySelector('.carousel');
+      if (!carousel) return;
+  
+      const viewport = carousel.querySelector('.carousel-viewport');
+      const track = carousel.querySelector('.carousel-track');
+      const prev = carousel.querySelector('.carousel-arrow-prev');
+      const next = carousel.querySelector('.carousel-arrow-next');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+      // Distance of one step = one photo's width plus the gap
+      function step() {
+        const item = track.querySelector('li');
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        return item.getBoundingClientRect().width + gap;
+      }
+  
+      function move(direction) {
+        viewport.scrollBy({ left: direction * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+  
+      function updateArrows() {
+        const max = viewport.scrollWidth - viewport.clientWidth;
+        prev.disabled = viewport.scrollLeft <= 1;
+        next.disabled = viewport.scrollLeft >= max - 1;
+      }
+  
+      prev.addEventListener('click', () => move(-1));
+      next.addEventListener('click', () => move(1));
+      viewport.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    })();
+  </script>
 
 </body>
 </html>
