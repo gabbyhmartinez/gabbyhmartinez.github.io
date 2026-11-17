@@ -1,47 +1,26 @@
-<!-- This HTML file provides a simple example of a portfolio page. It contains a header, a few sections, and a few charts. -->
-<!-- It works with the three css files in this folder: example1.css, example2.css and example3.css. -->
-<!-- The HTML file defines the structure of the page, and the CSS files define how it looks. -->
-<!-- The CSS examples are all designed to work with this page. Try swapping them out on line 29 and see what happens. -->
-
-<!-- Take a look around and make your own copy to adapt for your own use. -->
-
-<!-- This is a comment -->
-<!-- Comments are not displayed in the browser -->
-<!-- They can be used to leave notes in the code -->
-
 <!DOCTYPE html>
-<html> 
-    <!-- HTML is heirarchial: tags like this define elements on the page. 
-    Each tag does something different. For example:
-        - The <html> tag defines the whole document.
-        - The <h1> tag defines a large heading
-        - The <p> tag defines a paragraph
-        - Tags appear as an opening <div> and closing </div> pair
-    -->
+<html lang="en">
 
-<head>    
-    <!-- The head tag links to resources our page needs and defines information about it. Tags in the <head> aren't displayed on the page. -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PP434 Weekly Tasks | Gabriella Martinez</title>
+  <meta name="description" content="Weekly coding challenges for PP434 Data Visualization for Policymaking: hosted charts, replications, APIs, dashboards and maps.">
 
-    <!-- This is a link to a stylesheet which contains rules about how each element on the page should be defined-->
-    <!-- Try swapping example1.css to another, and take a look at example1.css to see if you understand it-->
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>PP434 Portfolio</title> <!-- The title displayed in the browser tab, not on the page itself -->
+  <!-- Fonts used in styles.css (Fraunces for headings, Karla for body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;700&display=swap">
 
-    <!-- This is a link to the vega-lite which we're using to make graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 
-    <style>
-        #chartGrid {
-            display: flex;
-        }
-        
-    </style>
+  <!-- Vega-Lite, used to draw the charts -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 
 <body>
-  <!-- Navigation: same block on every page; aria-current="page" marks the active tab -->
   <header class="site-header">
     <nav class="nav" aria-label="Main">
       <a class="nav-name" href="index.html">Gabriella Martinez</a>
@@ -54,223 +33,288 @@
     </nav>
   </header>
 
-  <main>
-<!-- The body tag contains the elements that visitors to our page will see. -->
-    <h1 class="page-title"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
-        <!-- This is a header, it is the largest text on the page -->
-        PP434 Portfolio Tasks
-    </h1>
-    <p class="byline">
-        <!-- we're setting the margin to 0px so the header and authour name are close together -->
-        Gabriella Martinez | <a href="https://www.linkedin.com/in/gabriellahmartinez/">LinkedIn</a> | <a
-            href="https://www.github.com/gabbyhmartinez">GitHub</a>
-    </p>
+  <!-- Each <section class="panel"> is one screen. As you scroll, the next panel rolls over the one before.
+       Panel recipe:
+         data-tone = foam | latte | emerald | espresso   (background colour)
+         class "flip" = swaps the chart and text sides
+         id        = only on the first panel of a challenge (the menu links to it)  -->
+  <main class="stack" id="top">
 
-    <!-- Coding Challenge 1 -->
-    <h2 class="section-title"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
-        CC1: Hosting and Displaying Charts  
-    </h2>
-    <p>
-        The first task for building a portfolio of charts is to understand building a live site using GitHub. 
-        To explore adding charts to the site, we used VegaEmbed to display charts. Explore the first charts below!
-    </p>
-
-    <!-- We're organising the page into sections, with each section containing a chart, title and a description -->
-    <section>
-        <div class="chart-description">
-            <h3>Chart 1: GDP and Life Expectancy</h3>
-            <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using a basic chart from our repo.
-            </p>
+    <!-- ===================== Opening ===================== -->
+    <section class="panel panel-hero" aria-labelledby="page-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <h1 id="page-title">PP434 Weekly Tasks</h1>
+          <p class="byline">
+            Gabriella Martinez |
+            <a href="https://www.linkedin.com/in/gabriellahmartinez/">LinkedIn</a> |
+            <a href="https://www.github.com/gabbyhmartinez">GitHub</a>
+          </p>
+          <p class="panel-lead">
+            A running record of the weekly coding challenges for Data Visualization for Policymaking,
+            from hosting a first chart to building maps.
+          </p>
+          <p>Scroll down and each task rolls over the last, or pick one from the list.</p>
         </div>
-        <figure id="Location1"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+
+        <ul class="menu" aria-label="Jump to a task">
+          <li><a href="#cc1"><div class="menu-line"><span class="dish">Hosting and displaying charts</span><span class="leader"></span><span class="tag">Charts 1 and 2</span></div></a></li>
+          <li><a href="#cc2"><div class="menu-line"><span class="dish">Building charts</span><span class="leader"></span><span class="tag">Charts 3 and 4</span></div></a></li>
+          <li><a href="#cc3"><div class="menu-line"><span class="dish">Policy debate</span><span class="leader"></span><span class="tag">Charts 5 and 6</span></div></a></li>
+          <li><a href="#cc4"><div class="menu-line"><span class="dish">Replication</span><span class="leader"></span><span class="tag">Charts 7 and 8</span></div></a></li>
+          <li><a href="#cc5"><div class="menu-line"><span class="dish">APIs and scraping</span><span class="leader"></span><span class="tag">Chart 9</span></div></a></li>
+          <li><a href="#cc6"><div class="menu-line"><span class="dish">UK devolution dashboard</span><span class="leader"></span><span class="tag">Coming soon</span></div></a></li>
+          <li><a href="#cc7"><div class="menu-line"><span class="dish">Maps</span><span class="leader"></span><span class="tag">Coming soon</span></div></a></li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Do you want to add more sections? -->
-        <!-- Try copying pasting the section above -->
-        <!-- You'll need to change the id of the figure "<figure id="Location3"... -->
-        <!-- ... and add a new variable for the graph spec in the script at the bottom of the page -->
-        <section>
-            <div class="chart-description">
-                <h3>Chart 2: Food Emissions</h3>
-                <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
-                    We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                    As a first example, we're using a basic chart from our repo.
-                </p>
-            </div>
-            <figure id="Location2"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
-        </section>
+    <!-- ===================== CC1 ===================== -->
+    <section class="panel" data-tone="foam" id="cc1" aria-labelledby="chart1-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 1: Hosting and displaying charts</p>
+          <h2 id="chart1-title">Chart 1: GDP and life expectancy</h2>
+          <p class="panel-lead">
+            The first task is to build a live site on GitHub and display charts on it using Vega-Embed.
+          </p>
+          <p>A starter chart loaded straight from the course repository, used to confirm the site can host and render a live Vega-Lite chart.</p>
+        </div>
+        <figure class="chart-card" id="Location1"></figure>
+      </div>
+    </section>
 
-        <!-- Coding Challenge 2 -->
-        <h2 class="section-title"> 
-            CC2: Building Charts  
-        </h2>
-        <p>
-            This section explores building my own charts using the Economics Observatory Data hub. 
-        </p>
+    <section class="panel flip" data-tone="latte" aria-labelledby="chart2-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 1: Hosting and displaying charts</p>
+          <h2 id="chart2-title">Chart 2: Food emissions</h2>
+          <p>A second example from the course chart library, loaded from a different repository to show that a chart spec can live anywhere online.</p>
+        </div>
+        <figure class="chart-card" id="Location2"></figure>
+      </div>
+    </section>
 
-        <section>
-            <div class="chart-description">
-                <h3>Chart 3: USA Population Growth</h3>
-                <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
-                    We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                    As a first example, we're using a basic chart from our repo.
-                </p>
-            </div>
-            <figure id="Location3"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
-        </section>
+    <!-- ===================== CC2 ===================== -->
+    <section class="panel" data-tone="foam" id="cc2" aria-labelledby="chart3-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 2: Building charts</p>
+          <h2 id="chart3-title">Chart 3: USA population growth</h2>
+          <p class="panel-lead">
+            This task explores building my own charts using the Economics Observatory Data Hub.
+          </p>
+          <!-- TODO: add one sentence on what the trend shows -->
+          <p>Population of the United States over time, built from Data Hub data.</p>
+        </div>
+        <figure class="chart-card" id="Location3"></figure>
+      </div>
+    </section>
 
-        <section>
-            <div class="chart-description">
-                <h3>Chart 4: Great Britian Government Investment</h3>
-                <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
-                    We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                    As a first example, we're using a basic chart from our repo.
-                </p>
-            </div>
-            <figure id="Location4"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
-        </section>
+    <section class="panel flip" data-tone="latte" aria-labelledby="chart4-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 2: Building charts</p>
+          <h2 id="chart4-title">Chart 4: Great Britain government investment</h2>
+          <!-- TODO: add one sentence on what the trend shows -->
+          <p>Government investment in Great Britain over time, built from Data Hub data.</p>
+        </div>
+        <figure class="chart-card" id="Location4"></figure>
+      </div>
+    </section>
 
-        <!-- Coding Challenge 3 -->
-        <h2 class="section-title"> 
-            CC3: Policy Debate  
-        </h2>
-        <p>
-            The policy topic I decided to focus on for this section relates to mental health disorders and substance abuse. Very often, those with mental health disorders are prone to substance abuse issues.
-            Some may argue that policy should account for these issues in combination with one another to more effecitvely combat substance abuse and mental health disorders. 
-        </p>
+    <!-- ===================== CC3 ===================== -->
+    <section class="panel" data-tone="emerald" id="cc3" aria-labelledby="chart5-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 3: Policy debate</p>
+          <h2 id="chart5-title">Chart 5: Drug use and mental health disorders</h2>
+          <p class="panel-lead">
+            I focused on mental health disorders and substance abuse. People with mental health disorders are often
+            more prone to substance abuse, so some argue policy should address the two together.
+          </p>
+          <p class="takeaway">
+            This chart shows how much more likely drug dependency is given a specific mental health disorder.
+            The increased risk is at minimum one, and at maximum over six times higher. The data suggests it is
+            important to tackle drug dependency in combination with mental health policy.
+          </p>
+        </div>
+        <figure class="chart-card" id="Location5"></figure>
+      </div>
+    </section>
 
-        <section>
-            <div class="chart-description">
-                <h3>Chart 5: Drug Use and Mental Health Disorders</h3>
-            </div>
-            <figure id="Location5"></figure> 
-            <p> 
-                This chart explores how more likely drug dependency is given a specific mental health disorder. We can see that the increased risk of drug dependency is at minimum one, and maximum over six times higher for mental health conditions.
-                The data here would suggest that it is important to tackle a drug dependency crisis in combination with mental health policy. 
-            </p>
-            </section>
+    <section class="panel flip" data-tone="espresso" aria-labelledby="chart6-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 3: Policy debate</p>
+          <h2 id="chart6-title">Chart 6: Exploring death rates</h2>
+          <p class="takeaway">
+            Death rates for substance abuse and mental health disorders are much higher in North America and Europe
+            than in other regions. These regions may benefit even more from a policy approach that tackles the two
+            issues together, given the real societal impact.
+          </p>
+        </div>
+        <figure class="chart-card" id="Location6"></figure>
+      </div>
+    </section>
 
-        <section>
-            <div class="chart-description">
-                <h3>Chart 6: Exploring Death Rates</h3>
-            </div>
-            <figure id="Location6"></figure> 
-            <p> 
-                The figure demonstrates that death rates for substance abuse and mental health disorders are much higher in North America and Europe than other regions.
-                This suggests that these regions may benefit even more from a policy approach that tackles the issues together, as they have real societal impacts.
-            </p>
-        </section>
-    
-        <!-- Coding Challenge 4 -->
-        <h2 class="section-title"> 
-            CC4: Replication
-        </h2>
-        <p>
-            The fourth task is to replicate and improve an existing chart from a policy organization, journalist, think tank, or similar entity.  
-        </p>
-        <section>
-            <div class="chart-description">
-                <p>
-                    The chart below is from Our World in Data. It depicts the population of some of the world's largest cities in 2020.
-                </p>
-            </div>
-            <img src="population-of-the-worlds-largest-cities.png" alt="Description of what the chart shows" style="max-width: 100%;">
-        </section>
+    <!-- ===================== CC4 ===================== -->
+    <section class="panel" data-tone="foam" id="cc4" aria-labelledby="orig-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 4: Replication</p>
+          <h2 id="orig-title">The original chart</h2>
+          <p class="panel-lead">
+            The task is to replicate and improve an existing chart from a policy organization, journalist or think tank.
+          </p>
+          <p>I chose this chart from Our World in Data, showing the population of some of the world's largest cities in 2020.</p>
+        </div>
+        <figure class="chart-card">
+          <img src="population-of-the-worlds-largest-cities.png"
+               alt="Horizontal bar chart from Our World in Data showing the populations of the world's largest cities in 2020, with the population printed beside each bar.">
+        </figure>
+      </div>
+    </section>
 
-        <section>
-            <div class="chart-description">
-                <h3>Chart 7: Replication</h3>
-                <p> 
-                    I have replicated the chart from Our World in Data using VegaLite. 
-                </p>
-            </div>
-            <figure id="Location7"></figure> 
-        </section>
+    <section class="panel flip" data-tone="latte" aria-labelledby="chart7-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 4: Replication</p>
+          <h2 id="chart7-title">Chart 7: Replication</h2>
+          <p>My replication of the Our World in Data chart, rebuilt in Vega-Lite.</p>
+        </div>
+        <figure class="chart-card" id="Location7"></figure>
+      </div>
+    </section>
 
-        <section>
-            <div class="chart-description">
-                <h3>Chart 8: Recreation</h3>
-                <p> 
-                    To improve the chart, the biggest change I made was to the x axis. Instead of displaying the population as a number next to each bar,
-                    I instead display population in millions along the x axis in steps of 5 million. Additionally, a vertical grid helps the viewer see where 
-                    each city falls on the x axis. I also increased the spacing between bars as well as between the titles and the data to improve overall readability of the chart, 
-                    as I felt the original was slightly cluttered. Finally, I added a tooltip so the user may hover over a bar and see the exact population number if they wish to know. 
-                </p>
-            </div>
-            <figure id="Location8"></figure> 
-        </section>
+    <section class="panel" data-tone="foam" aria-labelledby="chart8-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 4: Replication</p>
+          <h2 id="chart8-title">Chart 8: Recreation</h2>
+          <p class="takeaway">
+            The biggest change is the x axis. Instead of printing the population next to each bar, I show it in
+            millions along the axis in steps of 5 million, with a vertical grid so each city is easy to place.
+            I also added more space between bars and between titles and data, because the original felt slightly
+            cluttered, and a tooltip so you can hover over a bar to see the exact population.
+          </p>
+        </div>
+        <figure class="chart-card" id="Location8"></figure>
+      </div>
+    </section>
 
-        <!-- Coding Challenge 5 -->
-        <h2 class="section-title"> 
-            CC5: Accessing Data through an API and Scraping
-        </h2>
-        <p>
-            In this section we practice displaying a chart using an API and a chart built with scraped data. 
-        </p>
-        <section>
-            <div class="chart-description">
-                <h3>Chart 9: API Chart</h3>
-                <p> 
-                     
-                </p>
-            </div>
-            <figure id="Location9"></figure> 
-        </section>
+    <!-- ===================== CC5 ===================== -->
+    <section class="panel flip" data-tone="latte" id="cc5" aria-labelledby="chart9-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 5: Accessing data through an API and scraping</p>
+          <h2 id="chart9-title">Chart 9: API chart</h2>
+          <p class="panel-lead">
+            This task practices displaying a chart built from an API and a chart built from scraped data.
+          </p>
+        </div>
+        <!-- When Chart 9 is ready: replace this box with <figure class="chart-card" id="Location9"></figure>
+             and add { id: "Location9", spec: "your_file.json" } to the charts list in the script at the bottom. -->
+        <p class="coming-soon"><strong>Chart in progress.</strong><br>The API chart will appear here once it is finished.</p>
+      </div>
+    </section>
 
-        <!-- Coding Challenge 6 -->
-        <h2 class="section-title"> 
-            CC6: Loops. Build a UK Devolution Dashboard
-        </h2>
-        <p>
-            Description
-        </p>
+    <!-- ===================== CC6 ===================== -->
+    <section class="panel" data-tone="espresso" id="cc6" aria-labelledby="cc6-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 6</p>
+          <h2 id="cc6-title">Loops: building a UK devolution dashboard</h2>
+        </div>
+        <p class="coming-soon"><strong>Coming soon.</strong><br>The dashboard will be added after this task.</p>
+      </div>
+    </section>
 
-        <!-- Coding Challenge 7 -->
-        <h2 class="section-title"> 
-            CC7: Maps
-        </h2>
-        <p>
-            Description 
-        </p>
-
+    <!-- ===================== CC7 ===================== -->
+    <section class="panel flip" data-tone="foam" id="cc7" aria-labelledby="cc7-title">
+      <div class="panel-grid">
+        <div class="panel-text">
+          <p class="panel-kicker">Coding Challenge 7</p>
+          <h2 id="cc7-title">Maps</h2>
+        </div>
+        <p class="coming-soon"><strong>Coming soon.</strong><br>Maps will be added after this task.</p>
+      </div>
+    </section>
   </main>
 
-    <script>
-        // This is a comment in JavaScript - it's a different language to HTML and CSS
+  <footer class="site-footer">
+    <span>Gabriella Martinez | PP434 Data Visualization for Policymaking, LSE</span>
+    <a href="#top">Back to top</a>
+  </footer>
 
-        let figure_1_spec = "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json"; // We're storing the URL of the graph we want to display in a variable
-                                                                                                                    // You should have a spec for a graph in this same folder. Just specify its name here, e.g. let figure_1_spec = "chart1.json"
+  <script>
+    /* ---------- 1. Charts ----------
+       Each chart is a spec (a .json file or a URL) paired with the id of the <figure> it appears in.
+       To add a chart: add <figure class="chart-card" id="LocationN"> in a panel, then add a line here. */
+    const charts = [
+      { id: "Location1", spec: "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json" },
+      { id: "Location2", spec: "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartBar3.json" },
+      { id: "Location3", spec: "usa_pop.json" },
+      { id: "Location4", spec: "uk_invest.json" },
+      { id: "Location5", spec: "mentalhealth_drugs.json" },
+      { id: "Location6", spec: "WHO_mental_health.json" },
+      { id: "Location7", spec: "pop_recreated.json" },
+      { id: "Location8", spec: "pop_new.json" }
+    ];
 
-        vegaEmbed('#Location1', figure_1_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
+    // Scales a finished chart down to fit its card (never larger than its natural size).
+    // This is what stops wide charts being cut off. It works by giving the chart's SVG a viewBox.
+    function fitChart(figure) {
+      const svg = figure.querySelector("svg.marks");
+      if (!svg) return;
+      const w = parseFloat(svg.getAttribute("width"));
+      const h = parseFloat(svg.getAttribute("height"));
+      if (!w || !h) return;
+      svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+      svg.style.width = "100%";
+      svg.style.maxWidth = w + "px";
+      svg.style.height = "auto";
+    }
 
-        // Do you want to add more graphs?
-        // try defining a new variable for figure_3_spec, adding VegaEmbed for Location3, and adding a new section in the HTML
-        // e.g. 
-        let figure_2_spec = "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/refs/heads/main/charts/library/chartBar3.json"
-        vegaEmbed('#Location2', figure_2_spec)
+    charts.forEach(({ id, spec }) => {
+      // renderer "svg" is what lets the chart scale smoothly with the card
+      vegaEmbed("#" + id, spec, {
+        renderer: "svg",
+        actions: { export: true, source: false, compiled: false, editor: false }
+      })
+        .then(() => fitChart(document.getElementById(id)))
+        .catch(() => {
+          // If a spec fails to load, show a readable message instead of an empty box
+          document.getElementById(id).innerHTML =
+            '<p class="chart-error">This chart could not be loaded. Check that ' + spec + ' is in the repo.</p>';
+        });
+    });
 
-        let figure_3_spec = "usa_pop.json"
-        vegaEmbed('#Location3', figure_3_spec)
+    /* ---------- 2. Stacking panels ----------
+       Panels stick just under the nav. A panel taller than the screen would have its bottom cut off
+       while the next one rolls over it, so each panel's "top" is set so that its bottom edge lines up
+       with the bottom of the screen when it is taller than the window. */
+    const header = document.querySelector(".site-header");
+    const panels = Array.from(document.querySelectorAll(".panel"));
 
+    function layoutStack() {
+      const headerH = header.offsetHeight;
+      document.documentElement.style.setProperty("--header-h", headerH + "px");
+      panels.forEach(panel => {
+        panel.style.top = Math.min(headerH, window.innerHeight - panel.offsetHeight) + "px";
+      });
+    }
 
-        let figure_4_spec = "uk_invest.json"
-        vegaEmbed('#Location4', figure_4_spec)
-
-        let figure_5_spec = "mentalhealth_drugs.json"
-        vegaEmbed('#Location5', figure_5_spec)
-
-        let figure_6_spec = "WHO_mental_health.json"
-        vegaEmbed('#Location6', figure_6_spec)
-
-        let figure_7_spec = "pop_recreated.json"
-        vegaEmbed('#Location7', figure_7_spec)
-
-        let figure_8_spec = "pop_new.json"
-        vegaEmbed('#Location8', figure_8_spec)
-    </script>
-
+    layoutStack();
+    window.addEventListener("resize", layoutStack);
+    window.addEventListener("load", layoutStack);
+    // Re-measure whenever a chart or image finishes loading and changes a panel's height
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(layoutStack);
+      panels.forEach(panel => observer.observe(panel));
+      observer.observe(header);
+    }
+  </script>
 </body>
-    
+
 </html>
